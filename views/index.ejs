@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <link href=/resources/style.css type=text/css rel=stylesheet/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>Hello Express!</h1>
+        <form method="POST" action="/rider">
+            Firstname: <input type="text" id="firstname" name="firstname"/>
+            Lastname: <input type="text" id="lastname" name="lastname"/>
+            <input type="submit" value="Submit"/>
+        </form>
+        <script>
+            $.ajax({
+                type: "POST",
+                url: "/riderjson",
+                data: JSON.stringify({
+                    firstname: 'John',
+                    lastname: 'Smith'
+                }),
+                dataType: 'json',
+                contentType: 'application/json'
+            });
+        </script>
+    </body>
+</html>
