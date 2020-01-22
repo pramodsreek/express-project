@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Products</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>productId</th>
+                <th>productName</th>
+                <th>capacity</th>
+                <th>basePrice</th>
+                <th>minimumPrice</th>
+                <th>costPerMinute</th>
+                <th>costPerDistance</th>
+                <th>serviceFees</th>
+                <th>createdAt</th>
+                <th>updatedAt</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each products as |p|}}
+             <tr>
+                 <td>{{p.productId}}</td>
+                 <td>{{p.productName}}</td>
+                 <td>{{p.capacity}}</td>
+                 <td>{{p.basePrice}}</td>
+                 <td>{{p.minimumPrice}}</td>
+                 <td>{{p.costPerMinute}}</td>
+                 <td>{{p.costPerDistance}}</td>
+                 <td>{{p.serviceFees}}</td>
+                 <td>{{p.createdAt}}</td>
+                 <td>{{p.updatedAt}}</td>
+             </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</body>
+</html>
+

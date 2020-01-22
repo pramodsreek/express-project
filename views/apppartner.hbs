@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>App Partner</title>
+</head>
+<body>
+    <h1>Create App Partner</h1>
+
+    <form action="/partner" method="post">
+<!--
+        appPartners, products, productAppPartners -->
+
+        <b>App Partners</b>
+        <select name="partner">
+            {{#each appPartners as |ap|}}
+                <option value="{{ap.appPartnerId}}">{{ap.appPartnerName}}</option>
+            {{/each}}
+        </select>
+
+        <br>
+
+        <b>Products</b>
+        <select name="product">
+            {{#each products as |p|}}
+                <option value="{{p.productId}}">{{p.productName}}</option>
+            {{/each}}
+        </select>
+
+        <br>
+
+        <b>Unique Number</b>
+        <input name="uniqueno" type="number" min="1" max="5">
+
+        <br>
+
+        <b>Date</b>
+        <input name="tdate" type="date">     
+
+        <br>
+        <input type="reset">
+        <input type="submit">   
+
+    </form>
+    
+</body>
+</html>
+
