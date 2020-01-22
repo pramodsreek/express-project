@@ -51,3 +51,27 @@ CREATE TABLE IF NOT EXISTS ProductAppPartners (
     FOREIGN KEY (productId) REFERENCES Products(productId),
     FOREIGN KEY (appPartnerId) REFERENCES AppPartners(appPartnerId)
 )  ENGINE=INNODB;
+
+CREATE VIEW v_incorrect_rider_emails AS
+    SELECT email, count(email) number_of_incorrect_email_ids FROM riders 
+    WHERE firstname = lastname 
+    GROUP BY email
+    ORDER BY number_of_incorrect_email_ids DESC;
+
+CREATE VIEW v_preference_anomaly AS
+WITH 
+TollRoadPreference AS (SELECT tollRoadPreferred, COUNT(tollRoadPreferred) no_of_toll_road_preference
+ FROM RiderPreferences WHERE updatedAt < DATE_SUB(NOW(), INTERVAL 6 HOUR) AND tollRoadPreferred != shortDurationPreferred 
+ GROUP BY tollRoadPreferred),
+ShortDurationPreference AS (SELECT shortDurationPreferred, COUNT(shortDurationPreferred) no_of_short_duration_preference
+ FROM RiderPreferences WHERE updatedAt < DATE_SUB(NOW(), INTERVAL 6 HOUR) AND tollRoadPreferred != shortDurationPreferred
+ GROUP BY shortDurationPreferred )
+SELECT no_of_toll_road_preference TollRoad, no_of_short_duration_preference ShortDuration, 
+CASE
+    WHEN shortDurationPreferred = 0 THEN 'Not Preferred'
+    ELSE 'Preferred'
+END Preference
+FROM TollRoadPreference 
+INNER JOIN ShortDurationPreference ON tollRoadPreferred = shortDurationPreferred
+ORDER BY shortDurationPreferred DESC;
+

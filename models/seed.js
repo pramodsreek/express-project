@@ -7,30 +7,30 @@ const seed = async () => {
 
         db.sync();
 
-        /** 
+        
         //ignore duplicates will ignore if there are duplicate records and continue instead of interupting
         await RiderPreference.bulkCreate([
-            {riderId: 1, tollRoadPreferred: 1, shortDurationPreferred: 1},
-            {riderId: 2, tollRoadPreferred: 0, shortDurationPreferred: 1},
-            {riderId: 3, tollRoadPreferred: 1, shortDurationPreferred: 0},
-            {riderId: 4, tollRoadPreferred: 0, shortDurationPreferred: 1},
-            {riderId: 5, tollRoadPreferred: 1, shortDurationPreferred: 0}
+            {riderId: 6, tollRoadPreferred: 1, shortDurationPreferred: 1},
+            {riderId: 7, tollRoadPreferred: 0, shortDurationPreferred: 1},
+            {riderId: 8, tollRoadPreferred: 1, shortDurationPreferred: 0},
+            {riderId: 9, tollRoadPreferred: 0, shortDurationPreferred: 1},
+            {riderId: 10, tollRoadPreferred: 1, shortDurationPreferred: 0}
         ], {
             ignoreDuplicates: true
         })
-
+/** 
         await Product.bulkCreate([
-            {productName: 'SmallCar', capacity: 3, basePrice: 1.50, minimumPrice: 5.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
-            {productName: 'MediumCar', capacity: 5, basePrice: 1.50, minimumPrice: 5.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
-            {productName: 'LargeCar', capacity: 7, basePrice: 1.50, minimumPrice: 5.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
-            {productName: 'SmallBus', capacity: 10, basePrice: 1.50, minimumPrice: 5.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
-            {productName: 'MediumBus', capacity: 15, basePrice: 1.50, minimumPrice: 5.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
-            {productName: 'LargeBus', capacity: 20, basePrice: 1.50, minimumPrice: 5.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
-            {productName: 'SmallCarWithBabySeat', capacity: 2, basePrice: 1.50, minimumPrice: 5.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
-            {productName: 'MediumCarWithBabySeat', capacity: 4, basePrice: 1.50, minimumPrice: 5.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
-            {productName: 'LargeCarWithBabySeat', capacity: 6, basePrice: 1.50, minimumPrice: 5.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
-            {productName: 'SmallFlyingTaxi', capacity: 3, basePrice: 1.50, minimumPrice: 5.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
-            {productName: 'LargeFlyingTaxi', capacity: 5, basePrice: 1.50, minimumPrice: 5.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70}
+            {productName: 'SmallCar20', capacity: 3, basePrice: 1.50, minimumPrice: 15.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
+            {productName: 'MediumCar20', capacity: 5, basePrice: 1.50, minimumPrice: 15.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
+            {productName: 'LargeCar20', capacity: 7, basePrice: 1.50, minimumPrice: 15.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
+            {productName: 'SmallBus20', capacity: 10, basePrice: 1.50, minimumPrice: 15.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
+            {productName: 'MediumBus20', capacity: 15, basePrice: 1.50, minimumPrice: 15.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
+            {productName: 'LargeBus20', capacity: 20, basePrice: 1.50, minimumPrice: 15.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
+            {productName: 'SmallCarWithBabySeat20', capacity: 2, basePrice: 1.50, minimumPrice: 15.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
+            {productName: 'MediumCarWithBabySeat20', capacity: 4, basePrice: 1.50, minimumPrice: 25.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
+            {productName: 'LargeCarWithBabySeat20', capacity: 6, basePrice: 1.50, minimumPrice: 25.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
+            {productName: 'SmallFlyingTaxi20', capacity: 3, basePrice: 1.50, minimumPrice: 25.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
+            {productName: 'LargeFlyingTaxi20', capacity: 5, basePrice: 1.50, minimumPrice: 25.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70}
         ], {
             ignoreDuplicates: true
         })
@@ -44,7 +44,7 @@ const seed = async () => {
         ], {
             ignoreDuplicates: true
         })
-*/
+
         await ProductAppPartner.bulkCreate([
             {productId: 1, appPartnerId: 1},
             {productId: 2, appPartnerId: 1},
@@ -57,7 +57,7 @@ const seed = async () => {
         ], {
             ignoreDuplicates: true
         })
-
+*/
         
         
     } catch (error) {
