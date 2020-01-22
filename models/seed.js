@@ -7,7 +7,7 @@ const seed = async () => {
 
         db.sync();
 
-        
+ /**       
         //ignore duplicates will ignore if there are duplicate records and continue instead of interupting
         await RiderPreference.bulkCreate([
             {riderId: 6, tollRoadPreferred: 1, shortDurationPreferred: 1},
@@ -18,7 +18,7 @@ const seed = async () => {
         ], {
             ignoreDuplicates: true
         })
-/** 
+ 
         await Product.bulkCreate([
             {productName: 'SmallCar20', capacity: 3, basePrice: 1.50, minimumPrice: 15.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
             {productName: 'MediumCar20', capacity: 5, basePrice: 1.50, minimumPrice: 15.00, costPerMinute: 0.05, costPerDistance: 1.05, serviceFees: 2.70},
@@ -34,17 +34,23 @@ const seed = async () => {
         ], {
             ignoreDuplicates: true
         })
-
+*/
         await AppPartner.bulkCreate([
-            {appPartnerName: 'StateTransport', isGlobalAppPartner: 0, revenueSharing: 1, revenueSharePercentage: 18},
-            {appPartnerName: 'BrayHound', isGlobalAppPartner: 1, revenueSharing: 1, revenueSharePercentage: 20},
-            {appPartnerName: 'Hasseys', isGlobalAppPartner: 0, revenueSharing: 1, revenueSharePercentage: 30},
-            {appPartnerName: 'Cooks', isGlobalAppPartner: 1, revenueSharing: 0, revenueSharePercentage: 0},
-            {appPartnerName: 'TapOn', isGlobalAppPartner: 0, revenueSharing: 1, revenueSharePercentage: 19}
+            {appPartnerName: 'StateTransport20', isGlobalAppPartner: 0, revenueSharing: 1, revenueSharePercentage: 50},
+            {appPartnerName: 'BrayHound20', isGlobalAppPartner: 1, revenueSharing: 1, revenueSharePercentage: 50},
+            {appPartnerName: 'Hasseys20', isGlobalAppPartner: 0, revenueSharing: 1, revenueSharePercentage: 50},
+            {appPartnerName: 'Cooks20', isGlobalAppPartner: 1, revenueSharing: 1, revenueSharePercentage: 50},
+            {appPartnerName: 'TapOn20', isGlobalAppPartner: 0, revenueSharing: 1, revenueSharePercentage: 50},
+            {appPartnerName: 'StateTransport30', isGlobalAppPartner: 0, revenueSharing: 1, revenueSharePercentage: 50},
+            {appPartnerName: 'BrayHound30', isGlobalAppPartner: 1, revenueSharing: 1, revenueSharePercentage: 50},
+            {appPartnerName: 'Hasseys30', isGlobalAppPartner: 0, revenueSharing: 1, revenueSharePercentage: 50},
+            {appPartnerName: 'Cooks30', isGlobalAppPartner: 1, revenueSharing: 1, revenueSharePercentage: 50},
+            {appPartnerName: 'TapOn30', isGlobalAppPartner: 0, revenueSharing: 1, revenueSharePercentage: 50}
         ], {
             ignoreDuplicates: true
         })
 
+        /** 
         await ProductAppPartner.bulkCreate([
             {productId: 1, appPartnerId: 1},
             {productId: 2, appPartnerId: 1},

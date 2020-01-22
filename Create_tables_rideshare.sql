@@ -75,3 +75,14 @@ FROM TollRoadPreference
 INNER JOIN ShortDurationPreference ON tollRoadPreferred = shortDurationPreferred
 ORDER BY shortDurationPreferred DESC;
 
+CREATE VIEW v_app_partners_with_max_revenue_sharing AS
+SELECT isGlobalAppPartner, COUNT(isGlobalAppPartner) NumberOfPartners, 
+GROUP_CONCAT(appPartnerName SEPARATOR ',') ListOfParners,
+CASE
+    WHEN isGlobalAppPartner = 0 THEN 'Local App Partner'
+    ELSE 'Global App Partner'
+END PartnerType 
+FROM AppPartners  
+WHERE revenueSharePercentage = 50
+GROUP BY isGlobalAppPartner
+ORDER BY isGlobalAppPartner desc;
