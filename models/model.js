@@ -19,7 +19,7 @@ const Rider = riderModel(db, DataTypes);
 
 const task = async () => {
     try {
-        await db.sync({alter: true})
+        //await db.sync({alter: true})
 
         //Insert a Rider
         for (let i=0; i<50; i++) {
@@ -38,7 +38,7 @@ const task = async () => {
 //task();
 
 /** 
-db.sync({alter: true})
+//db.sync({alter: true})
     .then(() => console.log('Database synced'))
     .catch(console.error)
 */

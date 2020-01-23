@@ -18,7 +18,7 @@ const ProductAppPartner = productAppPartnersModel(db, DataTypes);
 //Product.belongsToMany(ProductAppPartner, {through: 'productId'});
 
 /** 
-db.sync()
+//db.sync()
     .then(() => console.log('Database synced'))
     .catch(console.error)
     */

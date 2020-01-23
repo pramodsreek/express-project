@@ -5,7 +5,7 @@ const seed = async () => {
 
     try {
 
-        db.sync();
+        //db.sync();
 
  /**       
         //ignore duplicates will ignore if there are duplicate records and continue instead of interupting

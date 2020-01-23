@@ -3,7 +3,7 @@ const {db, Rider} = require('./model');
 const task = async () => {
     try {
 
-        await db.sync();
+        //await db.sync();
 
         let riders = await Rider.findAll();
 
