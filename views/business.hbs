@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+      
+    <h1>Business Operations</h1>
+
+    <!-- Start Preference Anomaly-->
+
+    <h2>Looking for preference anomalies.</h2>
+
+    <h3></h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Preference</th>
+                <th>TollRoad</th>
+                <th>ShortDuration</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each preferenceAnomaly as |r|}}
+                <tr>
+                    <td>{{r.Preference}}</td>
+                    <td>{{r.TollRoad}}</td>
+                    <td>{{r.ShortDuration}}</td>   
+                </tr>
+            
+            {{/each}}
+        </tbody>
+    </table>
+
+
+    <!-- End Preference Anomaly-->
+
+    <h2>Looking for email anomalies.</h2>
+
+    <h3>Used for altering operations analyst of corrupted data. 
+        There are customers who are sharing email addresses in a subset of data.
+        These need urgent attention from Operations team. Operations team should check the email addresses and investigate if a defect is causing this issue, 
+        or someone is creating them and if there should be additional constraints added to prevent this issue.
+        </h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>email</th>
+                <th>Number of times email <br>address is used</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each incorrectRiderEmails as |p|}}
+                 <tr>
+                        <td>{{p.email}}</td>
+                        <td>{{p.number_of_incorrect_email_ids}}</td>
+                    </tr>
+             
+            {{/each}}
+        </tbody>
+    </table>
+
+</body>
+</html>
+
