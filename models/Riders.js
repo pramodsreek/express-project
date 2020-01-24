@@ -41,6 +41,11 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: true,
 			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
 			comment: "null"
+        },
+        'score': {
+			type: DataTypes.INTEGER,
+			allowNull: true,
+			comment: "null"
 		}
 	}, {
 		tableName: 'Riders'

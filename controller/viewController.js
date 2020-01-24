@@ -9,9 +9,13 @@ let jsonParser = bodyParser.json()
 
 module.exports = function (app){
 
-    app.get('/', function(req, res){
-        // res.send('<html><head><link href=resources/style.css type=text/css rel=stylesheet></head><body><h1>Hello Express!</h1></body></html>');
+    app.get('/riders/new', function(req, res){
         res.render('index');
+    });
+
+    app.get('/', function(req, res){
+         res.send('<html><head><link href=resources/style.css type=text/css rel=stylesheet></head><body> \
+         <h1>Please use <a href="/riders/new">Create New</a> </h1></body></html>');
     });
 
     app.get('/rider/:id', function(req, res){

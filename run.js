@@ -8,8 +8,8 @@ const start = async () => {
         
         //await db.sync();
 
-        app.listen(3030, () => {
-            console.log('Server started - http://localhost:3030');
+        app.listen(3035, () => {
+            console.log('Server started - http://localhost:3035');
         })
 
     } catch (error) {
