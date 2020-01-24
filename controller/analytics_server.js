@@ -1,14 +1,15 @@
 const express = require('express');
 const path = require('path');
 const {app_partner_and_products, app_partners_with_max_revenue_sharing, 
-    incorrect_rider_emails, preference_anomaly, riders_with_preferences} = require('./models/modelviews')
+    incorrect_rider_emails, preference_anomaly, riders_with_preferences} = require('../models/modelviews')
 
 const app = express();
 
 app.set('view engine', 'hbs');
-app.set('views', path.resolve(__dirname, './views'))
+app.set('views', path.resolve(__dirname, '../views'))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+app.use('/resources', express.static('public'));
 
 app.get('/business', async (req, res) => {
 

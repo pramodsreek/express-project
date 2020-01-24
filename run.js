@@ -1,6 +1,6 @@
 //const {db, Rider, RiderPreference, AppPartner, Product, ProductAppPartner} = require('./models/models')
 
-const {app} = require('./server')
+const {app} = require('./controller/server')
 
 const start = async () => {
 

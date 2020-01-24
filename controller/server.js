@@ -1,15 +1,16 @@
 const express = require('express');
 const path = require('path');
-const {db, Rider, RiderPreference, AppPartner, Product, ProductAppPartner} = require('./models/models')
+const {db, Rider, RiderPreference, AppPartner, Product, ProductAppPartner} = require('../models/models')
 
 const { check, validationResult } = require('express-validator');
 
 const app = express();
 
 app.set('view engine', 'hbs');
-app.set('views', path.resolve(__dirname, './views'))
+app.set('views', path.resolve(__dirname, '../views'))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+app.use('/resources', express.static('public'));
 
 app.get('/partner', async (req, res) => {
 
