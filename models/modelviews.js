@@ -43,6 +43,6 @@ riders_with_preferences.removeAttribute('updatedAt');
     .catch(console.error)
     */
 
-module.exports = {db, app_partner_and_products, app_partners_with_max_revenue_sharing, 
+module.exports = {app_partner_and_products, app_partners_with_max_revenue_sharing, 
     incorrect_rider_emails, preference_anomaly, riders_with_preferences};
 

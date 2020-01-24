@@ -225,6 +225,86 @@ app.get('/products', async (req, res) => {
 } 
 )
 
+app.get('/products/minimumprice/average', async (req, res) => {
+    //export all data
+        try {
+            
+
+            const products = await Product.findAll({
+                attributes: ['capacity', [db.fn('AVG', 
+                db.col('minimumPrice')), 'minimumPriceAvg']],
+                group: ['capacity'],
+                order: [[db.fn('AVG', db.col('minimumPrice')), 'DESC']]
+            });
+    
+            res.json(products);
+    
+        } catch (error) {
+            console.error(error);
+        }
+    
+    })
+
+app.get('/products/minimumprice/sum', async (req, res) => {
+        //export all data
+            try {
+                
+    
+                const products = await Product.findAll({
+                    attributes: ['capacity', [db.fn('SUM', 
+                    db.col('minimumPrice')), 'minimumPriceSum']],
+                    group: ['capacity'],
+                    order: [[db.fn('SUM', db.col('minimumPrice')), 'DESC']]
+                });
+        
+                res.json(products);
+        
+            } catch (error) {
+                console.error(error);
+            }
+        
+})
+
+app.get('/products/minimumprice/min', async (req, res) => {
+    //export all data
+        try {
+            
+
+            const products = await Product.findAll({
+                attributes: ['capacity', [db.fn('MIN', 
+                db.col('minimumPrice')), 'minimumPriceeMin']],
+                group: ['capacity'],
+                order: [[db.fn('MIN', db.col('minimumPrice')), 'ASC']]
+            });
+    
+            res.json(products);
+    
+        } catch (error) {
+            console.error(error);
+        }
+    
+})
+
+app.get('/products/minimumprice/max', async (req, res) => {
+    //export all data
+        try {
+            
+
+            const products = await Product.findAll({
+                attributes: ['capacity', [db.fn('MAX', 
+                db.col('minimumPrice')), 'minimumPriceMax']],
+                group: ['capacity'],
+                order: [[db.fn('MAX', db.col('minimumPrice')), 'ASC']]
+            });
+    
+            res.json(products);
+    
+        } catch (error) {
+            console.error(error);
+        }
+    
+})
+
 module.exports = {
     app
 }

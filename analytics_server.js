@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const {db, app_partner_and_products, app_partners_with_max_revenue_sharing, 
+const {app_partner_and_products, app_partners_with_max_revenue_sharing, 
     incorrect_rider_emails, preference_anomaly, riders_with_preferences} = require('./models/modelviews')
 
 const app = express();
