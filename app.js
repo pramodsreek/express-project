@@ -37,7 +37,7 @@ app.use('/', function(req, res, next) {
 
     connection.connect();
  
-    connection.query ('SELECT rider.rider_id, rider.firstname, rider.lastname, \
+    connection.query ('SELECT rider.riderId, rider.firstname, rider.lastname, \
                         rider.email, rider.mobile, \
                         rider.createdAt, rider.updatedAt \
                         from Riders rider', function (error, results, fields) {
@@ -48,7 +48,7 @@ app.use('/', function(req, res, next) {
  
     connection.end();
 
-
+    
     next(); //call the next middelewate that is get
 })
 
