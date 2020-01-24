@@ -151,6 +151,45 @@ app.delete('/riders/:id', async (req, res) => {
         
 })
 
+
+app.put('/riders/:id', async (req, res) => {
+    //export all data
+        try {
+            const riderId = req.params.id;
+            const changes = req.body;
+            const rider = await Rider.findByPk(riderId);
+            
+            console.log(rider);
+
+          /**   Rider.update(changes, { riderId: riderId  }).then((result) => {
+                // here result will be [ 1 ], if the id column is unique in your table
+                // the problem is that you can't return updated instance, you would have to retrieve it from database once again
+                res.json(result);
+            }).catch(e => {
+                console.log(e);
+            }); */
+
+            const [numberOfAffectedRows, affectedRows] = await Rider.update(
+                changes, {
+                where: {riderId: riderId},
+                returning: true, // needed for affectedRows to be populated
+                plain: true // makes sure that the returned instances are just plain objects
+              })
+              
+              console.log(numberOfAffectedRows) // say we had 3 pugs with the age of 7. This will then be 3
+              console.log(affectedRows) // this will be an array of the three affected pugs
+              
+
+              res.json("updated");
+    
+
+        } catch (error) {
+            console.error(error);
+            res.json(error);
+        }
+    
+})
+
 app.post('/partner', async (req, res) => {
     
     try {
