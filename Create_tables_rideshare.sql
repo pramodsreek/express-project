@@ -103,3 +103,12 @@ ProductAppPartners.productId,  Products.productName
 FROM ProductAppPartners
 INNER JOIN AppPartners ON AppPartners.appPartnerId = ProductAppPartners.appPartnerId
 INNER JOIN Products ON Products.productId = ProductAppPartners.productId;
+
+-- if the constraint has to be dropped, name the constraint
+ALTER TABLE RiderPreferences DROP CONSTRAINT riderpreferences_ibfk_1;
+
+-- DELETE CASCADE will delete the child records if the parent record is deleted.
+ALTER TABLE RiderPreferences 
+ADD CONSTRAINT riderpreferences_ibfk_1 FOREIGN KEY (riderId)
+        REFERENCES Riders(riderId)
+        ON DELETE CASCADE;

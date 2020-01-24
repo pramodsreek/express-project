@@ -15,10 +15,8 @@ app.get('/business', async (req, res) => {
     try {
         const appPartnerAndProducts = await app_partner_and_products.findAll();
         const appPartnersWithMaxRevenueSharing = await app_partners_with_max_revenue_sharing.findAll();
+        
         const incorrectRiderEmails = await incorrect_rider_emails.findAll();
-
-       
-
         const preferenceAnomaly = await preference_anomaly.findAll();
         const ridersWithPreferences = await riders_with_preferences.findAll(); 
         

@@ -42,3 +42,4 @@ module.exports = function(sequelize, DataTypes) {
 		tableName: 'v_riders_with_preferences'
 	});
 };
+

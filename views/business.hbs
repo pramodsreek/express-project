@@ -8,37 +8,7 @@
 </head>
 <body>
       
-    <h1>Business Operations</h1>
-
-    <!-- Start Preference Anomaly-->
-
-    <h2>Looking for preference anomalies.</h2>
-
-    <h3></h3>
-
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Preference</th>
-                <th>TollRoad</th>
-                <th>ShortDuration</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            {{#each preferenceAnomaly as |r|}}
-                <tr>
-                    <td>{{r.Preference}}</td>
-                    <td>{{r.TollRoad}}</td>
-                    <td>{{r.ShortDuration}}</td>   
-                </tr>
-            
-            {{/each}}
-        </tbody>
-    </table>
-
-
-    <!-- End Preference Anomaly-->
+    <h1>Business Operations - Daily Admin Dashboard</h1>
 
     <h2>Looking for email anomalies.</h2>
 
@@ -66,6 +36,218 @@
             {{/each}}
         </tbody>
     </table>
+
+    <!-- Start Preference Anomaly-->
+
+    <h2>Looking for preference anomalies.</h2>
+
+    <h3>Another input to dasboard. If a customer prefers Short Duration, it is likely
+        that Toll Road's have to be used for achieving short duration. The numbers should 
+        match. It is an example where sql queries/views can be used as an input to dash boards,
+        and help solution architects to revisit and redesign the fields. 
+    </h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Preference</th>
+                <th>TollRoad</th>
+                <th>ShortDuration</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each preferenceAnomaly as |r|}}
+                <tr>
+                    <td>{{r.Preference}}</td>
+                    <td>{{r.TollRoad}}</td>
+                    <td>{{r.ShortDuration}}</td>   
+                </tr>
+            
+            {{/each}}
+        </tbody>
+    </table>
+
+
+    <!-- End Preference Anomaly-->
+
+    <!-- Start Customers with preferences-->
+
+    <h2>Displaying all customers with preferences</h2>
+
+    <h3>It shows all customers including the ones that have no preferences. A left join of 
+        customer and preferences. 
+    </h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>riderId</th>
+                <th>firstname</th>
+                <th>lastname</th>
+                <th>email</th>
+                <th>mobile</th>
+                <th>tollRoadPreferred</th>
+                <th>shortDurationPreferred</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each ridersWithPreferences as |c|}}
+                <tr>
+                    <td>{{c.riderId}}</td>
+                    <td>{{c.firstname}}</td>
+                    <td>{{c.lastname}}</td>
+                    <td>{{c.email}}</td>
+                    <td>{{c.mobile}}</td>
+                    <td>{{c.tollRoadPreferred}}</td>
+                    <td>{{c.shortDurationPreferred}}</td>   
+                </tr>
+            
+            {{/each}}
+        </tbody>
+    </table>
+
+
+    <!-- End Customers with preferences-->
+
+    <!-- Start App Partner and Products -->
+
+    <h2>Displaying App Partners and their Products</h2>
+
+    <h3>It shows all Ride Share Business Partners and their Products. It is an inner join of three tables.
+    </h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>appPartnerId</th>
+                <th>appPartnerName</th>
+                <th>productId</th>
+                <th>productName</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each appPartnerAndProducts as |t|}}
+                <tr>
+                    <td>{{t.appPartnerId}}</td>
+                    <td>{{t.appPartnerName}}</td>
+                    <td>{{t.productId}}</td>
+                    <td>{{t.productName}}</td> 
+                </tr>
+
+            {{/each}}
+        </tbody>
+    </table>
+
+
+    <!-- End App Partners and Products-->
+
+    <!-- Start App Partner and Products -->
+
+    <h2>Displaying App Partners and their Products</h2>
+
+    <h3>It shows all Ride Share Business Partners and their Products. It is an inner join of three tables.
+    </h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>appPartnerId</th>
+                <th>appPartnerName</th>
+                <th>productId</th>
+                <th>productName</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each appPartnerAndProducts as |t|}}
+                <tr>
+                    <td>{{t.appPartnerId}}</td>
+                    <td>{{t.appPartnerName}}</td>
+                    <td>{{t.productId}}</td>
+                    <td>{{t.productName}}</td> 
+                </tr>
+
+            {{/each}}
+        </tbody>
+    </table>
+
+
+    <!-- End App Partners and Products-->
+
+    <!-- Start App Partner and Products -->
+
+    <h2>Displaying App Partners and their Products</h2>
+
+    <h3>It shows all Ride Share Business Partners and their Products. It is an inner join of three tables.
+    </h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>appPartnerId</th>
+                <th>appPartnerName</th>
+                <th>productId</th>
+                <th>productName</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each appPartnerAndProducts as |t|}}
+                <tr>
+                    <td>{{t.appPartnerId}}</td>
+                    <td>{{t.appPartnerName}}</td>
+                    <td>{{t.productId}}</td>
+                    <td>{{t.productName}}</td> 
+                </tr>
+
+            {{/each}}
+        </tbody>
+    </table>
+
+
+    <!-- End App Partners and Products-->
+
+
+appPartnersWithMaxRevenueSharing
+
+<!-- Start App Partner and Products -->
+
+    <h2>Displaying Partners with maximum revenue share with Ride Share.</h2>
+
+    <h3>Combines data from multiple rows in SQL and displays it comma separated.
+    </h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>PartnerType</th>
+                <th>NumberOfPartners</th>
+                <th>ListOfParners</th>
+                <th>isGlobalAppPartner</th>
+            </tr>
+        </thead>
+
+
+
+
+        <tbody>
+            {{#each appPartnersWithMaxRevenueSharing as |x|}}
+                <tr>
+                    <td>{{x.PartnerType}}</td>
+                    <td>{{x.NumberOfPartners}}</td>
+                    <td>{{x.ListOfParners}}</td>
+                    <td>{{x.isGlobalAppPartner}}</td>
+                </tr>
+
+            {{/each}}
+        </tbody>
+    </table>
+
+
+    <!-- End App Partners and Products-->
 
 </body>
 </html>
