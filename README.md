@@ -68,7 +68,7 @@ Before running the two application, the following steps should be followed.
 
 **Structure of Files**
 
-![Structure of Project](/Users/pramods/Downloads/express-project-master/docs/project_structure.png)
+![Structure of Project](./docs/project_structure.png)
 
 **config** - configuration files for different environments (development, staging, testing)
 
@@ -134,9 +134,11 @@ There are industry practices that help being ethical with software development. 
 
 **Legal**
 
-\- legal obligations: that you have assessed whether the application is subject to any legal regulation, if none, consider any privacy implications
+Developers should not be making any legality related decisions. It is always better to contact the company legal teams or managers to get help. 
 
+Developers should use the best practices and tools to develop software that protects data of clients and end customers. If developers notice any issues beyond what they can manage, it should be escalated to project managers.
 
+Beyond all this, developers should have a clear understanding of the requirements and statement of work (SOW). SOW is generally derived from the contract between vendor and client. Developers are the best people to understand the work involved in developing a solution and also feasibility of the solution itself. If there are issues and the requirements cannot be fulfilled due to product limitations or any other factors, it should be raised and resolved early. If this is not done and parts of requirements are not delivered, it will result in a legal dispute.
 
 **Requirement Code - R4**
 
@@ -209,7 +211,7 @@ The controller with routes can be found in <a href="./controller/server.js">Code
 
 ​	If the creation is successful, the following json object is returned.
 
-![Create Rider Success](/Users/pramods/express-project/docs/post_form.png)
+![Create Rider Success](./docs/post_form.png)
 
 
 
