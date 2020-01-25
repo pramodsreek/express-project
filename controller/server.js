@@ -37,11 +37,7 @@ app.get('/partner', async (req, res) => {
 app.get('/rider', async (req, res) => {
 
     try {
-        //const riders = await Rider.findAll();
         
-        //res.render('riders', {
-           // riders
-        //});
 
         res.render('rider');
 
@@ -60,12 +56,12 @@ app.post('/rider', [
     check('email').isEmail(),
     // lastname must be at least 5 chars long
     check('lastname').isLength({ min: 5 })
-  ], async (req, res) => {
+], async (req, res) => {
     
     // Finds the validation errors in this request and wraps them in an object with handy functions
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
+    return res.status(422).json({ errors: errors.array() });
     }
 
     try {
@@ -97,9 +93,7 @@ app.get('/riders', async (req, res) => {
     try {
         const riders = await Rider.findAll();
         
-        //res.render('riders', {
-           // riders
-        //});
+        
 
         res.json(riders);
 
@@ -115,9 +109,6 @@ app.get('/riders/:id', async (req, res) => {
             const riderId = req.params.id;
             const rider = await Rider.findByPk(riderId);
             
-            //res.render('riders', {
-               // riders
-            //});
     
             res.json(rider);
     
@@ -140,7 +131,7 @@ app.delete('/riders/:id', async (req, res) => {
                         riderId: riderId
                     },
                     force: true
-                  });
+                });
 
                 res.json("deleted");
         
@@ -162,26 +153,20 @@ app.put('/riders/:id', async (req, res) => {
             
             console.log(rider);
 
-          /**   Rider.update(changes, { riderId: riderId  }).then((result) => {
-                // here result will be [ 1 ], if the id column is unique in your table
-                // the problem is that you can't return updated instance, you would have to retrieve it from database once again
-                res.json(result);
-            }).catch(e => {
-                console.log(e);
-            }); */
+        
 
             const [numberOfAffectedRows, affectedRows] = await Rider.update(
                 changes, {
                 where: {riderId: riderId},
                 returning: true, // needed for affectedRows to be populated
                 plain: true // makes sure that the returned instances are just plain objects
-              })
-              
-              console.log(numberOfAffectedRows) // say we had 3 pugs with the age of 7. This will then be 3
-              console.log(affectedRows) // this will be an array of the three affected pugs
-              
+            })
+            
+              console.log(numberOfAffectedRows) 
+              console.log(affectedRows) 
+            
 
-              res.json("updated");
+            res.json("updated");
     
 
         } catch (error) {
@@ -196,17 +181,15 @@ app.post('/partner', async (req, res) => {
     try {
         console.log("partner", req.body.partner);
         console.log("product", req.body.product);
-        console.log("unique number", req.body.uniqueno);
-        console.log("tdate", req.body.tdate);
 
         const partnerapp = await ProductAppPartner.create({
             productId: req.body.product,
             appPartnerId: req.body.partner
         });
 
-        console.log("successfully posted" + Date.parse(partnerapp.createdAt));
+        console.log("successfully posted");
 
-        res.send("successfully posted" + partnerapp.createdAt);
+        res.send("successfully posted");
     } catch (error) {
         
         console.log(error);

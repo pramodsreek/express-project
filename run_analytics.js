@@ -1,6 +1,7 @@
-//const {db, Rider, RiderPreference, AppPartner, Product, ProductAppPartner} = require('./models/models')
-
 const {app} = require('./controller/analytics_server')
+require('dotenv').config({path: __dirname + '/.env'})
+
+let port = process.env['PORT_ANALYTICS'] || 3031; //default value is 3031
 
 const start = async () => {
 
@@ -8,8 +9,8 @@ const start = async () => {
         
         //await db.sync();
 
-        app.listen(3031, () => {
-            console.log('Server started - http://localhost:3031');
+        app.listen(port, () => {
+            console.log('Server started - http://localhost:'+port);
         })
 
     } catch (error) {

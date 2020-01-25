@@ -1,3 +1,4 @@
+--- Create table scripts
 
 CREATE TABLE IF NOT EXISTS Riders (
     riderId INT AUTO_INCREMENT PRIMARY KEY,
@@ -19,6 +20,15 @@ CREATE TABLE IF NOT EXISTS RiderPreferences (
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (riderId) REFERENCES Riders(riderId)
 )  ENGINE=INNODB;
+
+-- if the constraint has to be dropped, name the constraint
+ALTER TABLE RiderPreferences DROP CONSTRAINT riderpreferences_ibfk_1;
+
+-- DELETE CASCADE will delete the child records if the parent record is deleted.
+ALTER TABLE RiderPreferences 
+ADD CONSTRAINT riderpreferences_ibfk_1 FOREIGN KEY (riderId)
+        REFERENCES Riders(riderId)
+        ON DELETE CASCADE;
 
 CREATE TABLE IF NOT EXISTS AppPartners (
 	appPartnerId INT AUTO_INCREMENT PRIMARY KEY,
@@ -54,63 +64,5 @@ CREATE TABLE IF NOT EXISTS ProductAppPartners (
     FOREIGN KEY (appPartnerId) REFERENCES AppPartners(appPartnerId)
 )  ENGINE=INNODB;
 
-CREATE VIEW v_incorrect_rider_emails AS
-    SELECT email, count(email) number_of_incorrect_email_ids FROM riders 
-    WHERE firstname = lastname 
-    GROUP BY email
-    ORDER BY number_of_incorrect_email_ids DESC;
+-- End of create table scripts
 
-CREATE VIEW v_preference_anomaly AS
-WITH 
-TollRoadPreference AS (SELECT tollRoadPreferred, COUNT(tollRoadPreferred) no_of_toll_road_preference
- FROM RiderPreferences WHERE updatedAt < DATE_SUB(NOW(), INTERVAL 6 HOUR) AND tollRoadPreferred != shortDurationPreferred 
- GROUP BY tollRoadPreferred),
-ShortDurationPreference AS (SELECT shortDurationPreferred, COUNT(shortDurationPreferred) no_of_short_duration_preference
- FROM RiderPreferences WHERE updatedAt < DATE_SUB(NOW(), INTERVAL 6 HOUR) AND tollRoadPreferred != shortDurationPreferred
- GROUP BY shortDurationPreferred )
-SELECT no_of_toll_road_preference TollRoad, no_of_short_duration_preference ShortDuration, 
-CASE
-    WHEN shortDurationPreferred = 0 THEN 'Not Preferred'
-    ELSE 'Preferred'
-END Preference
-FROM TollRoadPreference 
-INNER JOIN ShortDurationPreference ON tollRoadPreferred = shortDurationPreferred
-ORDER BY shortDurationPreferred DESC;
-
-CREATE VIEW v_app_partners_with_max_revenue_sharing AS
-SELECT isGlobalAppPartner, COUNT(isGlobalAppPartner) NumberOfPartners, 
-GROUP_CONCAT(appPartnerName SEPARATOR ',') ListOfParners,
-CASE
-    WHEN isGlobalAppPartner = 0 THEN 'Local App Partner'
-    ELSE 'Global App Partner'
-END PartnerType 
-FROM AppPartners  
-WHERE revenueSharePercentage = 50
-GROUP BY isGlobalAppPartner
-ORDER BY isGlobalAppPartner desc;
-
-
-CREATE VIEW v_riders_with_preferences AS 
-SELECT Riders.riderId, Riders.firstname, Riders.lastname, Riders.email, 
-Riders.mobile, RiderPreferences.tollRoadPreferred, 
-RiderPreferences.shortDurationPreferred 
-FROM Riders
-LEFT JOIN RiderPreferences 
-ON Riders.riderId = RiderPreferences.riderId;
-
-
-CREATE VIEW v_app_partner_and_products AS
-SELECT ProductAppPartners.appPartnerId, AppPartners.appPartnerName,
-ProductAppPartners.productId,  Products.productName
-FROM ProductAppPartners
-INNER JOIN AppPartners ON AppPartners.appPartnerId = ProductAppPartners.appPartnerId
-INNER JOIN Products ON Products.productId = ProductAppPartners.productId;
-
--- if the constraint has to be dropped, name the constraint
-ALTER TABLE RiderPreferences DROP CONSTRAINT riderpreferences_ibfk_1;
-
--- DELETE CASCADE will delete the child records if the parent record is deleted.
-ALTER TABLE RiderPreferences 
-ADD CONSTRAINT riderpreferences_ibfk_1 FOREIGN KEY (riderId)
-        REFERENCES Riders(riderId)
-        ON DELETE CASCADE;
